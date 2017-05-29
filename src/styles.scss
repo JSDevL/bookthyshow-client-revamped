@@ -1,0 +1,101 @@
+/* You can add global styles to this file, and also import other style files */
+/* You can add global styles to this file, and also import other style files */
+
+@import url('https://fonts.googleapis.com/css?family=Pacifico');
+
+$grey: #f4f4f4;
+$darkGrey: #1f2533;
+$red: #c02c39;
+$darkRed: #b01c29;
+
+body{
+	min-height: 100%;
+	padding-top: 70px;
+}
+
+.router-outlet-container{
+	min-height: 800px;
+}
+
+.brand{
+	font-family: 'Pacifico', cursive;
+	color: white;
+
+	span{
+		color: $red;
+	}
+}
+
+.navbar-fixed-top{
+	background-color: $darkGrey;
+    border-color: $darkGrey;
+
+	.navbar-nav > li > a{
+		&:active, &:link, &:visited{
+			color: #eee;
+		}
+
+		color: white;
+		letter-spacing: 1px;
+		font-size: 1.2rem;
+		font-weight: bold;
+		text-transform: uppercase;
+
+		&:hover{
+			color: $red;
+		}
+	}
+
+	.navbar-nav > li.active > a{
+		color: $darkGrey;
+	}
+
+	a.navbar-brand{
+		font-family: 'Pacifico', cursive;
+		color: white;
+
+		span{
+			color: $red;
+		}
+
+		&:hover{
+			color: $red;
+		}
+	}
+}
+
+.modal{
+	display: block;
+	background-color: rgba(0,0,0,0.7);
+
+	&.fade{
+		visibility: hidden;
+	    opacity: 0;
+    	transition: opacity .15s linear;
+	}
+
+	&.fade.in{
+		visibility: visible;
+	    opacity: 1;
+	}
+}
+
+footer{
+	margin-top: 20px;
+	padding: 20px 0;
+
+	color: #eee;
+	text-align: center;
+
+	background-color: $darkGrey;
+}
+
+.btn.red{
+	color: white;
+	background: $red;
+}
+
+.btn.red:hover{
+	color: white;
+	background: $darkRed;
+}

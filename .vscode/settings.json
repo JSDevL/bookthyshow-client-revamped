@@ -1,0 +1,11 @@
+// Place your settings in this file to overwrite default and user settings.
+{
+  "files.exclude": {
+    "node_modules": true,
+    "e2e": true,
+    "*.*": true,
+    "src/*.*": true,
+    "src/assets": true,
+    "src/environments": true
+  }
+}
