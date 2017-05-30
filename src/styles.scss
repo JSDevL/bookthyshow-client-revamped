@@ -1,20 +1,24 @@
 /* You can add global styles to this file, and also import other style files */
 
-@import url('https://fonts.googleapis.com/css?family=Montserrat+Subrayada:400,700');
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,900');
 @import './app/_variables.scss';
 
+a{
+	color: $text-dark;
+}
+
 body{
-	min-height: 100%;
+	background-color: $bg-light;
 	padding-top: 50px;
 }
 
 .brand{
-	font-family: 'Montserrat Subrayada', sans-serif;
-	font-weight: 700;
+	font-family: 'Roboto', sans-serif;
 	color: white !important;
 
 	span{
 		color: $primary-green;
+		font-weight: 900;
 	}
 }
 
@@ -46,5 +50,6 @@ footer{
 }
 
 .sub-header{
+	background-color: white;
 	padding: 20px 0;
 }
