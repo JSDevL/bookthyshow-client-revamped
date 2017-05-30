@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Data } from '@angular/router';
 import { Subscription } from 'rxjs/subscription';
+import * as _ from 'underscore';
 
 import { Movie } from '../../shared/models/movie.model';
 
@@ -13,7 +14,8 @@ import { MoviesService } from '../../shared/services/movies.service';
 })
 export class MoviesComponent implements OnInit, OnDestroy {
 
-	public movies: Movie[];
+	public _ = _;
+	public movies: Movie[] = [];
 	private moviesSubscription: Subscription;
 
 	constructor(private route: ActivatedRoute, private moviesService: MoviesService) {}
@@ -21,7 +23,14 @@ export class MoviesComponent implements OnInit, OnDestroy {
 	ngOnInit() {
 		this.moviesSubscription = this.moviesService.movies$.subscribe( (movies: Movie[]) => {
 			this.movies = movies;
-			console.log(this.movies);
+		});
+	}
+
+	deleteMovie(movieToDelete: Movie) {
+		this.moviesService.deleteMovie(movieToDelete._id).subscribe( () => {
+			this.moviesService.moviesSource.next(
+				_.reject(this.movies, movie => movie._id === movieToDelete._id)
+			);
 		});
 	}
 

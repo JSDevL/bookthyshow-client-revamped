@@ -1,0 +1,70 @@
+@import '../../../_variables';
+
+form{
+	td{
+		vertical-align: middle;
+
+		.form-group{
+			margin: 0px;
+
+			.form-control{
+				background: none;
+				border: none;
+				box-shadow: none;
+
+				font-style: italic;
+    			font-size: 2rem;
+			}
+		}
+
+		label{
+			margin: 0px;
+		}
+	}
+}
+
+.masonry { /* Masonry container */
+    column-count: 5;
+}
+
+.item { /* Masonry bricks or child elements */
+    display: inline-block;
+    width: 100%;
+
+	overflow: hidden; /* Fix for firefox and IE 10-11  */
+	-webkit-column-break-inside: avoid; /* Chrome, Safari, Opera */
+	page-break-inside: avoid; /* Firefox */
+	break-inside: avoid; /* IE 10+ */
+	break-inside: avoid-column;
+
+	position: relative;
+
+	.thumbnail{
+		background-color: transparent;
+	}
+}
+
+.thumbnail .image{
+	display: inline-block;
+	position: relative;
+}
+
+.thumbnail .image button{
+	content:'sdfsdf';
+	display: none;
+	width: 100%;
+	height: 100%;
+
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	z-index: 1;
+
+	background: rgba(0,0,0,0.8);
+	color: white;
+	border: none;
+}
+
+.thumbnail .image:hover button{
+	display: block;
+}

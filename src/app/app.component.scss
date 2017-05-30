@@ -1,0 +1,29 @@
+@import './_variables.scss';
+
+.navbar-fixed-top{
+	background-color: $bg-dark;
+    border-width: 0px;
+
+	.navbar-nav > li > a{
+		&:active, &:link, &:visited{
+			color: $text-dark;
+		}
+
+		color: $text-dark;
+		letter-spacing: 1px;
+		font-size: 1.2rem;
+		font-weight: bold;
+		text-transform: uppercase;
+
+		&:hover{
+			color: $primary-green;
+		}
+	}
+
+	.navbar-nav > li.active{
+		a{
+			color: white;
+			background-color: $bg-dark;
+		}
+	}
+}

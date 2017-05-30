@@ -7,6 +7,7 @@ import { NotFoundComponent } from '../../not-found/not-found.component';
 import { AdminComponent } from '../../admin/admin.component';
 import { MoviesComponent } from '../../admin/movies/movies.component';
 import { TheatresComponent } from '../../admin/theatres/theatres.component';
+import { ErrorComponent } from '../../error/error.component';
 
 import { MoviesService } from '../services/movies.service';
 import { MoviesResolveService } from './movies-resolve.service';
@@ -32,6 +33,10 @@ const routes: Routes = [
 				component: TheatresComponent
 			}
 		]
+	},
+	{
+		path: 'error',
+		component: ErrorComponent
 	},
 	{
 		path: '**',

@@ -1,0 +1,32 @@
+<form (submit)="onMovieSearchFormSubmit()" #movieSearchForm="ngForm">
+	<table>
+		<tr>
+			<td><label for="movieTitle"><b><span class="glyphicon glyphicon-search"></span></b></label></td>
+			<td style="width:100%">
+				<div class="form-group">
+					<input id="movieTitle" class="form-control" type="text" placeholder="Search for movie"
+					required ngModel name="movieTitle">
+				</div>
+			</td>
+		</tr>
+	</table>
+</form>
+
+<hr *ngIf="movieSearchResults.length || movieSearchForm.submitted">
+
+<p *ngIf="movieSearchResults.length === 0 && movieSearchForm.submitted">No movies found</p>
+
+<div class="row masonry">
+	<div *ngFor="let movie of movieSearchResults" class="col-xs-2 item">
+		<div class="thumbnail" *ngIf="movie.poster_path !== null">
+			<a class="image" (click)="postMovie(movie)">
+				<img [src]="'http://image.tmdb.org/t/p/w185/'+movie.poster_path" alt="No Poster">
+				<button><h1><span class="glyphicon glyphicon-plus"></span></h1></button>
+			</a>
+			<div class="caption">
+				<h5><b>{{movie.title}}</b></h5>
+				<h6><b>{{movie.release_date}}</b></h6>
+			</div>
+		</div>
+	</div>
+</div>

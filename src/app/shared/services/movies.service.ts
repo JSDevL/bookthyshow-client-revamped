@@ -17,9 +17,19 @@ export class MoviesService {
 		this.movies$ = this.moviesSource.asObservable();
 	}
 
+	postMovie(movie: Movie): Observable<Movie>{
+		return this.http.post('/api/movies', movie).map( (response: Response) => {
+			return <Movie>response.json();
+		});
+	}
+
 	getMovies(): Observable<Movie[]> {
 		return this.http.get('/api/movies').map( (response: Response) => {
 			return <Movie[]>response.json();
 		});
+	}
+
+	deleteMovie(movie_id: String): Observable<Response> {
+		return this.http.delete(`/api/movies/${movie_id}`);
 	}
 }
