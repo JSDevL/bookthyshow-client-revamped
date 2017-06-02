@@ -8,9 +8,9 @@ import {City} from '../../../shared/models/city.model';
 import {CitiesService} from '../../../shared/services/cities.service';
 
 @Component({
-    selector: 'app-cities',
-    templateUrl: './cities.component.html',
-    styleUrls: ['./cities.component.scss']
+    selector: 'app-manage-cities',
+    templateUrl: './manage-cities.component.html',
+    styleUrls: ['./manage-cities.component.scss']
 })
 export class CitiesComponent implements OnInit, OnDestroy {
 

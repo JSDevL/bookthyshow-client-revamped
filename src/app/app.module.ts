@@ -14,29 +14,32 @@ import {MoviesComponent} from './admin/movies/movies.component';
 import {TheatresComponent} from './admin/theatres/theatres.component';
 import {MovieSearchComponent} from './admin/movies/movie-search/movie-search.component';
 import {ErrorComponent} from './error/error.component';
-import {CitiesComponent} from './admin/theatres/cities/cities.component';
+import {CitiesComponent} from './admin/theatres/manage-cities/manage-cities.component';
 import {FilterPipe} from './shared/pipes/filter.pipe';
+import {ManageTheatresComponent} from './admin/theatres/manage-theatres/manage-theatres.component';
 
 @NgModule({
-	declarations: [
-		AppComponent,
-		HomeComponent,
-		NotFoundComponent,
-		AdminComponent,
-		MoviesComponent,
-		TheatresComponent,
-		MovieSearchComponent,
+    declarations: [
+        AppComponent,
+        HomeComponent,
+        NotFoundComponent,
+        AdminComponent,
+        MoviesComponent,
+        TheatresComponent,
+        MovieSearchComponent,
         ErrorComponent,
         CitiesComponent,
-        FilterPipe
-	],
-	imports: [
-		BrowserModule,
-		FormsModule,
-		HttpModule,
-		RoutesModule
-	],
-	providers: [{provide: ErrorHandler, useClass: GlobalErrorHandler}],
-	bootstrap: [AppComponent]
+        FilterPipe,
+        ManageTheatresComponent
+    ],
+    imports: [
+        BrowserModule,
+        FormsModule,
+        HttpModule,
+        RoutesModule
+    ],
+    providers: [{provide: ErrorHandler, useClass: GlobalErrorHandler}],
+    bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
