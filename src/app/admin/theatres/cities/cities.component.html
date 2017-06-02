@@ -9,6 +9,8 @@
         </div>
     </div>
 
+    <p *ngIf="cities.length === 0">No cities added</p>
+
     <form (submit)="postCity()" #newCityForm="ngForm">
         <div class="city-pill btn-group">
             <button type="button" class="btn btn-default btn-form-control">
@@ -20,6 +22,4 @@
                 class="glyphicon glyphicon-plus"></span></button>
         </div>
     </form>
-
-    <p *ngIf="cities.length === 0">No cities added</p>
 </div>
