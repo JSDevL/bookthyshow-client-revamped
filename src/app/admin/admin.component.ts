@@ -7,14 +7,14 @@ import {CitiesService} from '../shared/services/cities.service';
 import {TheatresService} from '../shared/services/theatres.service';
 
 @Component({
-	selector: 'app-admin',
-	templateUrl: './admin.component.html',
-	styleUrls: ['./admin.component.scss'],
+    selector: 'app-admin',
+    templateUrl: './admin.component.html',
+    styleUrls: ['./admin.component.scss'],
     providers: [MoviesService, CitiesService, TheatresService]
 })
 export class AdminComponent implements OnInit, OnDestroy {
 
-	private routeDataSubscription: Subscription;
+    private routeDataSubscription: Subscription;
 
     constructor(private route: ActivatedRoute,
                 private moviesService: MoviesService,
@@ -22,17 +22,18 @@ export class AdminComponent implements OnInit, OnDestroy {
                 private theatresService: TheatresService) {
     }
 
-	ngOnInit() {}
+    ngOnInit() {
+    }
 
-	onRouteActive(e) {
-		this.routeDataSubscription = this.route.data.subscribe( (data: Data) => {
-			this.moviesService.moviesSource.next(data['movies']);
+    onRouteActive(e) {
+        this.routeDataSubscription = this.route.data.subscribe((data: Data) => {
+            this.moviesService.moviesSource.next(data['movies']);
             this.citiesService.citiesSource.next(data['cities']);
             this.theatresService.theatresSource.next(data['theatres']);
-		});
-	}
+        });
+    }
 
-	ngOnDestroy() {
-		this.routeDataSubscription.unsubscribe();
-	}
+    ngOnDestroy() {
+        this.routeDataSubscription.unsubscribe();
+    }
 }
