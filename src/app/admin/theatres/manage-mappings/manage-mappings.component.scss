@@ -1,0 +1,25 @@
+@import '../../../_variables';
+
+.list-group-item {
+    background-color: transparent;
+}
+
+select {
+    border: none;
+    padding: 0px;
+    overflow-y: hidden;
+
+    option {
+        background-color: $bg-light;
+        border: 1px #ccc solid;
+        padding: 10px;
+
+        &:first-child {
+            border-radius: 4px 4px 0 0;
+        }
+
+        &:last-child {
+            border-radius: 0 0 4px 4px;
+        }
+    }
+}

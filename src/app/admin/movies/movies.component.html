@@ -1,30 +1,32 @@
 <div id="movies">
-	<div class="container">
-		<h3><b>Movies</b> <small>Manage existing movies or add more from TMDb</small></h3>
-		<hr>
+    <div class="container">
+        <h3><b>Movies</b>
+            <small>Manage existing movies or add more from TMDb</small>
+        </h3>
+        <hr>
 
-		<app-movie-search></app-movie-search>
+        <app-movie-search></app-movie-search>
 
-		<h3>Added Movies</h3>
-		<table class="table table-bordered">
-			<tr>
-				<th>title</th>
-				<th>release_date</th>
-				<th>genres</th>
-				<th>runtime</th>
-				<th></th>
-			</tr>
-			<tr *ngFor="let movie of movies">
-				<td>{{movie.title}}</td>
-				<td>{{movie.release_date}}</td>
-				<td>{{_.pluck(movie.genres, "name").join(', ')}}</td>
-				<td>{{movie.runtime}}</td>
+        <h4>Added Movies</h4>
+        <table class="table table-bordered">
+            <tr>
+                <th>title</th>
+                <th>release_date</th>
+                <th>genres</th>
+                <th>runtime</th>
+                <th></th>
+            </tr>
+            <tr *ngFor="let movie of movies">
+                <td>{{movie.title}}</td>
+                <td>{{movie.release_date}}</td>
+                <td>{{_.pluck(movie.genres, "name").join(', ')}}</td>
+                <td>{{movie.runtime}}</td>
                 <td><a class="btn btn-default form-control" (click)="deleteMovie(movie)">Delete</a></td>
-			</tr>
-		</table>
+            </tr>
+        </table>
 
-		<p *ngIf="movies.length === 0">No movies added</p>
+        <p *ngIf="movies.length === 0">No movies added</p>
 
-		<hr>
-	</div>
+        <hr>
+    </div>
 </div>

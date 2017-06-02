@@ -17,6 +17,7 @@ import {ErrorComponent} from './error/error.component';
 import {CitiesComponent} from './admin/theatres/manage-cities/manage-cities.component';
 import {FilterPipe} from './shared/pipes/filter.pipe';
 import {ManageTheatresComponent} from './admin/theatres/manage-theatres/manage-theatres.component';
+import {ManageMappingsComponent} from './admin/theatres/manage-mappings/manage-mappings.component';
 
 @NgModule({
     declarations: [
@@ -30,7 +31,8 @@ import {ManageTheatresComponent} from './admin/theatres/manage-theatres/manage-t
         ErrorComponent,
         CitiesComponent,
         FilterPipe,
-        ManageTheatresComponent
+        ManageTheatresComponent,
+        ManageMappingsComponent
     ],
     imports: [
         BrowserModule,
