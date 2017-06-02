@@ -1,3 +1,50 @@
-<p>
-  theatres works!
-</p>
+<div id="theatres">
+    <div class="container">
+        <h3><b>Cities</b>
+            <small>Manage and add cities</small>
+        </h3>
+        <hr>
+
+        <app-cities [selectedCity]="selectedCity" (selectCity)="onSelectedCity($event)"></app-cities>
+
+        <h3><b>Theatres</b> <i *ngIf="selectedCity">for {{selectedCity.name}}</i>
+            <small>Manage and add theatres</small>
+        </h3>
+        <hr>
+
+        <div *ngIf="!selectedCity">Select a city above to view options.</div>
+
+        <ng-container *ngIf="selectedCity">
+            <form (submit)="postTheatre()" #newTheatreForm="ngForm">
+                <input type="hidden" [ngModel]="selectedCity._id" name="city_id" required>
+                <table class="table table-bordered">
+                    <tr>
+                        <th>Name</th>
+                        <th>location</th>
+                        <th></th>
+                    </tr>
+                    <tr *ngFor="let theatre of theatres | filter:'city_id':selectedCity._id">
+                        <td>{{theatre.name}}</td>
+                        <td>{{theatre.location}}</td>
+                        <td><a class="btn btn-default form-control" (click)="deleteTheatre(theatre)">Delete</a></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="text" id="name" class="form-control naked" placeholder="Enter name"
+                                   ngModel name="name" required>
+                        </td>
+                        <td>
+                            <input type="text" id="location" class="form-control naked" placeholder="Enter location"
+                                   ngModel name="location" required>
+                        </td>
+                        <td>
+                            <button type="submit" class="btn btn-default form-control"
+                                    [disabled]="newTheatreForm.invalid">Add Theatre
+                            </button>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </ng-container>
+    </div>
+</div>

@@ -19,7 +19,7 @@
 				<td>{{movie.release_date}}</td>
 				<td>{{_.pluck(movie.genres, "name").join(', ')}}</td>
 				<td>{{movie.runtime}}</td>
-				<td><a class="btn btn-default" (click)="deleteMovie(movie)">Delete</a></td>
+                <td><a class="btn btn-default form-control" (click)="deleteMovie(movie)">Delete</a></td>
 			</tr>
 		</table>
 

@@ -53,3 +53,12 @@ footer{
 	background-color: white;
 	padding: 20px 0;
 }
+
+.form-control.naked {
+    background: none;
+    border-width: 0px;
+    box-shadow: none;
+
+    font-style: italic;
+    font-size: 2rem;
+}

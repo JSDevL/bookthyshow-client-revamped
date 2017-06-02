@@ -1,0 +1,25 @@
+<div id="cities">
+    <div *ngFor="let city of cities">
+        <div class="city-pill btn-group">
+            <button type="button" class="btn btn-default" [ngClass]="{'active': selectedCity?._id === city._id}"
+                    (click)="selectCity.emit(city)">{{city.name}}
+            </button>
+            <button type="button" class="btn btn-default" (click)="deleteCity(city)"><span
+                class="glyphicon glyphicon-trash"></span></button>
+        </div>
+    </div>
+
+    <form (submit)="postCity()" #newCityForm="ngForm">
+        <div class="city-pill btn-group">
+            <button type="button" class="btn btn-default btn-form-control">
+                <input type="text" style="height:32px;" id="name" class="form-control" placeholder="Enter city name"
+                       ngModel name="name"
+                       required>
+            </button>
+            <button type="submit" class="btn btn-default" [disabled]="newCityForm.invalid"><span
+                class="glyphicon glyphicon-plus"></span></button>
+        </div>
+    </form>
+
+    <p *ngIf="cities.length === 0">No cities added</p>
+</div>

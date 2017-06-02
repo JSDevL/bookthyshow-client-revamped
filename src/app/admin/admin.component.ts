@@ -1,28 +1,34 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ActivatedRoute, Data } from '@angular/router';
-import { Subscription } from 'rxjs/subscription';
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {ActivatedRoute, Data} from '@angular/router';
+import {Subscription} from 'rxjs/subscription';
 
-import { Movie } from '../shared/models/movie.model';
-
-import { MoviesService } from '../shared/services/movies.service';
+import {MoviesService} from '../shared/services/movies.service';
+import {CitiesService} from '../shared/services/cities.service';
+import {TheatresService} from '../shared/services/theatres.service';
 
 @Component({
 	selector: 'app-admin',
 	templateUrl: './admin.component.html',
 	styleUrls: ['./admin.component.scss'],
-	providers: [MoviesService]
+    providers: [MoviesService, CitiesService, TheatresService]
 })
 export class AdminComponent implements OnInit, OnDestroy {
 
 	private routeDataSubscription: Subscription;
 
-	constructor(private route: ActivatedRoute, private moviesService: MoviesService) {}
+    constructor(private route: ActivatedRoute,
+                private moviesService: MoviesService,
+                private citiesService: CitiesService,
+                private theatresService: TheatresService) {
+    }
 
 	ngOnInit() {}
 
 	onRouteActive(e) {
 		this.routeDataSubscription = this.route.data.subscribe( (data: Data) => {
 			this.moviesService.moviesSource.next(data['movies']);
+            this.citiesService.citiesSource.next(data['cities']);
+            this.theatresService.theatresSource.next(data['theatres']);
 		});
 	}
 
