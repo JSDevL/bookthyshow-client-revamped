@@ -1,4 +1,4 @@
-<div id="manage-theatres">
+<div id="manage-theatres" *ngIf="selectedCity">
     <div *ngFor="let theatre of theatres | filter:'city_id':selectedCity._id">
         <div class="city-pill btn-group">
             <button type="button" class="btn btn-default">
@@ -12,7 +12,7 @@
         </div>
     </div>
 
-    <p *ngIf="theatres.length === 0">No theatres added</p>
+    <p *ngIf="(theatres | filter:'city_id':selectedCity._id).length === 0">No theatres added</p>
 
     <form (submit)="postTheatre()" #newTheatreForm="ngForm">
         <input type="hidden" [ngModel]="selectedCity._id" name="city_id" required>

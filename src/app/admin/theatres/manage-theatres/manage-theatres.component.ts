@@ -26,9 +26,7 @@ export class ManageTheatresComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit() {
-        console.log('sdf');
         this.theatresSubscription = this.theatresService.theatres$.subscribe((theatres: Theatre[]) => {
-            console.log('pqr');
             this.theatres = theatres;
         });
     }
