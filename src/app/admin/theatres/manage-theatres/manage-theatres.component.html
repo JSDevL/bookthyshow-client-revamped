@@ -1,10 +1,14 @@
 <div id="manage-theatres" *ngIf="selectedCity">
     <div *ngFor="let theatre of theatres | filter:'city_id':selectedCity._id">
         <div class="city-pill btn-group">
-            <button type="button" class="btn btn-default">
+            <button type="button" class="btn btn-default"
+                    [ngClass]="{'active': theatre._id === selectedTheatre?._id}"
+                    (click)="selectTheatre.emit(theatre)">
                 {{theatre.name}}
             </button>
-            <button type="button" class="btn btn-default">
+            <button type="button" class="btn btn-default"
+                    [ngClass]="{'active': theatre._id === selectedTheatre?._id}"
+                    (click)="selectTheatre.emit(theatre)">
                 {{theatre.location}}
             </button>
             <button type="button" class="btn btn-default" (click)="deleteTheatre(theatre)"><span

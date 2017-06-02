@@ -1,4 +1,4 @@
-import {Component, Input, OnDestroy, OnInit, ViewChild} from '@angular/core';
+import {Component, EventEmitter, Input, OnDestroy, OnInit, Output, ViewChild} from '@angular/core';
 import {Subscription} from 'rxjs/Subscription';
 import {Theatre} from '../../../shared/models/theatre.model';
 import {TheatresService} from 'app/shared/services/theatres.service';
@@ -15,6 +15,12 @@ export class ManageTheatresComponent implements OnInit, OnDestroy {
 
     @ViewChild('newTheatreForm')
     newTheatreForm: NgForm;
+
+    @Input('selectedTheatre')
+    selectedTheatre: Theatre;
+
+    @Output()
+    selectTheatre = new EventEmitter<Theatre>();
 
     @Input('selectedCity')
     selectedCity: City;

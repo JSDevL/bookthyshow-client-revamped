@@ -14,6 +14,16 @@
 
         <div *ngIf="!selectedCity">Select a city above to view options.</div>
 
-        <app-manage-theatres [selectedCity]="selectedCity"></app-manage-theatres>
+        <app-manage-theatres [selectedCity]="selectedCity"
+                             [selectedTheatre]="selectedTheatre"
+                             (selectTheatre)="onSelectedTheatre($event)"></app-manage-theatres>
+
+        <h3><b>Movies</b> <i *ngIf="selectedTheatre">available for {{selectedTheatre.name}},
+            {{selectedTheatre.location}}</i>
+            <small>Map movies to theatres</small>
+        </h3>
+        <hr>
+
+        <div *ngIf="!selectedTheatre">Select a theatre above to view options.</div>
     </div>
 </div>
