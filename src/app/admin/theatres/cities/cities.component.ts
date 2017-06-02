@@ -50,11 +50,13 @@ export class CitiesComponent implements OnInit, OnDestroy {
         this.citiesService.deleteCity(cityToDelete._id).subscribe(() => {
             this.citiesService.citiesSource.next(_.reject(this.cities, (city: City) => city._id === cityToDelete._id));
 
-            if (this.selectedCity._id === cityToDelete._id) {
-                this.selectCity.emit(undefined);
+            if (this.selectedCity) {
+                if (this.selectedCity._id === cityToDelete._id) {
+                    this.selectCity.emit(undefined);
+                }
             }
 
-            alert('City deleted');
+            alert('City deleted.');
         });
     }
 
