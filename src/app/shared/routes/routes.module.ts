@@ -15,57 +15,63 @@ import {CitiesService} from '../services/cities.service';
 import {CitiesResolveService} from './cities-resolve.service';
 import {TheatresService} from '../services/theatres.service';
 import {TheatresResolveService} from './theatres-resolve.service';
+import {MappingsResolveService} from './mappings-resolve.service';
+import {MappingsService} from '../services/mappings.service';
 
 const routes: Routes = [
-	{
-		path: '',
-		component: HomeComponent
-	},
-	{
-		path: 'admin',
-		component: AdminComponent,
-		resolve: {
+    {
+        path: '',
+        component: HomeComponent
+    },
+    {
+        path: 'admin',
+        component: AdminComponent,
+        resolve: {
             movies: MoviesResolveService,
             cities: CitiesResolveService,
-            theatres: TheatresResolveService
-		},
-		children: [
-			{
-				path: 'movies',
-				component: MoviesComponent
-			},
-			{
-				path: 'theatres',
-				component: TheatresComponent
-			}
-		]
-	},
-	{
-		path: 'error',
-		component: ErrorComponent
-	},
-	{
-		path: '**',
-		component: NotFoundComponent
-	}
+            theatres: TheatresResolveService,
+            mappings: MappingsResolveService
+        },
+        children: [
+            {
+                path: 'movies',
+                component: MoviesComponent
+            },
+            {
+                path: 'theatres',
+                component: TheatresComponent
+            }
+        ]
+    },
+    {
+        path: 'error',
+        component: ErrorComponent
+    },
+    {
+        path: '**',
+        component: NotFoundComponent
+    }
 ];
 
 @NgModule({
-	imports: [
-		RouterModule.forRoot(routes, { useHash: true }),
-		CommonModule
-	],
-	exports: [
-		RouterModule
-	],
-	providers: [
-		MoviesResolveService,
+    imports: [
+        RouterModule.forRoot(routes, {useHash: true}),
+        CommonModule
+    ],
+    exports: [
+        RouterModule
+    ],
+    providers: [
+        MoviesResolveService,
         MoviesService,
         CitiesResolveService,
         CitiesService,
         TheatresResolveService,
-        TheatresService
-	],
-	declarations: []
+        TheatresService,
+        MappingsResolveService,
+        MappingsService
+    ],
+    declarations: []
 })
-export class RoutesModule { }
+export class RoutesModule {
+}
