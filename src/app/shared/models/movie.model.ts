@@ -12,9 +12,4 @@ export interface Movie {
     }[];
     overview: String;
     runtime: Number;
-    theatres?: {
-        theatre_id: String,
-        dates: String[],
-        timings: String[]
-    }[];
 };
