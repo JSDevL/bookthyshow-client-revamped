@@ -1,31 +1,42 @@
 <div id="theatres">
     <div class="container">
-        <h3><b>Cities</b>
-            <small>Manage and add cities</small>
-        </h3>
-        <hr>
+        <div class="row">
+            <div class="col-xs-4">
+                <hr>
+                <div class="list-group">
+                    <a class="list-group-item"
+                       [ngClass]="{'active':selectedMovie?._id === movie._id}"
+                       *ngFor="let movie of movies" (click)="this.selectedMovie = movie">
+                        {{movie.title}}</a>
+                </div>
+            </div>
 
-        <app-manage-cities [selectedCity]="selectedCity" (selectCity)="onSelectedCity($event)"></app-manage-cities>
+            <div class="col-xs-8">
+                <div class="page-header">
+                    <h3><b>Cities</b></h3>
+                    <small>Manage and add cities</small>
+                </div>
 
-        <h3><b>Theatres</b> <i *ngIf="selectedCity">for {{selectedCity.name}}</i>
-            <small>Manage and add theatres</small>
-        </h3>
-        <hr>
+                <app-manage-cities [selectedCity]="selectedCity"
+                                   (selectCity)="onSelectedCity($event)"></app-manage-cities>
 
-        <div *ngIf="!selectedCity">Select a city above to view options.</div>
+                <div class="page-header">
+                    <h3><b>Theatres</b> <i *ngIf="selectedCity">for {{selectedCity.name}}</i></h3>
+                    <small>Manage and add theatres</small>
+                </div>
 
-        <app-manage-theatres [selectedCity]="selectedCity"
-                             [selectedTheatre]="selectedTheatre"
-                             (selectTheatre)="onSelectedTheatre($event)"></app-manage-theatres>
+                <app-manage-theatres [selectedCity]="selectedCity" [selectedTheatre]="selectedTheatre"
+                                     (selectTheatre)="onSelectedTheatre($event)"></app-manage-theatres>
 
-        <h3><b>Movies</b> <i *ngIf="selectedTheatre">available for {{selectedTheatre.name}},
-            {{selectedTheatre.location}}</i>
-            <small>Map movies to theatres</small>
-        </h3>
-        <hr>
+                <div class="page-header">
+                    <h3><b>Mappings</b> <i *ngIf="selectedTheatre">available for {{selectedTheatre.name}},
+                        {{selectedTheatre.location}}</i></h3>
+                    <small>Map movies to theatres</small>
+                </div>
 
-        <div *ngIf="!selectedTheatre">Select a theatre above to view options.</div>
-
-        <app-manage-mappings [selectedTheatre]="selectedTheatre"></app-manage-mappings>
+                <app-manage-mappings [selectedTheatre]="selectedTheatre"
+                                     [selectedMovie]="selectedMovie"></app-manage-mappings>
+            </div>
+        </div>
     </div>
 </div>

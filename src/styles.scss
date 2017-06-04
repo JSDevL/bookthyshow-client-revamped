@@ -1,57 +1,56 @@
 /* You can add global styles to this file, and also import other style files */
-
 @import url('https://fonts.googleapis.com/css?family=Roboto:400,900');
 @import './app/_variables.scss';
 
-a{
-	color: $text-dark;
+a {
+    color: $text-dark;
 }
 
-body{
-	background-color: $bg-light;
-	padding-top: 50px;
+body {
+    background-color: $bg-light;
+    padding-top: 50px;
 }
 
-.brand{
-	font-family: 'Roboto', sans-serif;
-	color: white !important;
+.brand {
+    font-family: 'Roboto', sans-serif;
+    color: white !important;
 
-	span{
-		color: $primary-green;
-		font-weight: 900;
-	}
+    span {
+        color: $primary-green;
+        font-weight: 900;
+    }
 }
 
-.modal{
-	display: block;
-	background-color: rgba(0,0,0,0.7);
+.modal {
+    display: block;
+    background-color: rgba(0, 0, 0, 0.7);
 
-	&.fade{
-		visibility: hidden;
-	    opacity: 0;
-    	transition: opacity .15s linear;
-	}
+    &.fade {
+        visibility: hidden;
+        opacity: 0;
+        transition: opacity .15s linear;
+    }
 
-	&.fade.in{
-		visibility: visible;
-	    opacity: 1;
-	}
+    &.fade.in {
+        visibility: visible;
+        opacity: 1;
+    }
 }
 
-footer{
-	padding: 20px 0;
+footer {
+    padding: 20px 0;
 
-	color: #eee;
-	text-align: center;
+    color: #eee;
+    text-align: center;
 
-	font-size: 0.8rem;
+    font-size: 0.8rem;
 
-	background-color: $bg-dark;
+    background-color: $bg-dark;
 }
 
-.sub-header{
-	background-color: white;
-	padding: 20px 0;
+.sub-header {
+    background-color: white;
+    padding: 20px 0;
 }
 
 .form-control.naked {
@@ -61,4 +60,8 @@ footer{
 
     font-style: italic;
     font-size: 2rem;
+}
+
+.page-header {
+    border-color: #ccc;
 }

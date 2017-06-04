@@ -6,7 +6,7 @@ import * as _ from 'underscore';
 })
 export class FilterPipe implements PipeTransform {
 
-    transform(collection: any, key: string, value: string): any {
+    transform(collection: any, key: string, value: any): any {
         return _.filter(collection, item => item[key] === value);
     }
 

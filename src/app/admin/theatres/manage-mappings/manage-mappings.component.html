@@ -1,21 +1,8 @@
-<div id="manage-mappings" *ngIf="selectedTheatre">
-    <div class="row">
-        <div class="col-xs-5">
-            <h4>Available Movies</h4>
-            <select class="form-control" [size]="movies.length">
-                <option *ngFor="let movie of movies">{{movie.title}}</option>
-            </select>
-        </div>
-        <div class="col-xs-2">
-            <h4></h4>
-        </div>
-        <div class="col-xs-5">
-            <h4>Mapped Movies</h4>
-            <select class="form-control" [size]="movies.length">
-                <option *ngFor="let movie of movies">{{movie.title}}</option>
-            </select>
-        </div>
-    </div>
+<div *ngIf="!activeMapping">
+    not found. Create?
+    <button class="btn btn-default" (click)="createMapping()">Create</button>
+</div>
 
-    <hr>
+<div *ngIf="activeMapping">
+    found
 </div>

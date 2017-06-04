@@ -32,6 +32,10 @@ export class CitiesComponent implements OnInit, OnDestroy {
     ngOnInit() {
         this.citiesSubscription = this.citiesService.cities$.subscribe((cities: City[]) => {
             this.cities = cities;
+
+            if (!this.selectedCity) {
+                this.selectCity.emit(cities[0]);
+            }
         });
     }
 

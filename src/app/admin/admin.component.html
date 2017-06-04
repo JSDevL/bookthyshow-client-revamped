@@ -1,14 +1,16 @@
 <div class="sub-header">
-	<div class="container">
-		<h2><b>Admin</b> Section</h2>
+    <div class="container">
+        <h2><b>Admin</b> Section</h2>
 
-		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ac tellus vitae ligula vehicula elementum. Nulla a rhoncus urna. Etiam sodales, tellus at sodales cursus, ante lectus ultricies est, vitae luctus nisl nisl ut arcu.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ac tellus vitae ligula vehicula elementum.
+            Nulla a rhoncus urna. Etiam sodales, tellus at sodales cursus, ante lectus ultricies est, vitae luctus nisl
+            nisl ut arcu.</p>
 
-		<ul class="nav nav-tabs">
-			<li [routerLinkActive]="'active'"><a [routerLink]="['movies']">Movies</a></li>
+        <ul class="nav nav-tabs">
+            <li [routerLinkActive]="'active'"><a [routerLink]="['movies']">Movies</a></li>
             <li [routerLinkActive]="'active'"><a [routerLink]="['theatres']">Theatres</a></li>
-		</ul>
-	</div>
+        </ul>
+    </div>
 </div>
 
 <router-outlet (activate)="onRouteActive($event)"></router-outlet>
