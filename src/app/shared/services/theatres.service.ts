@@ -20,6 +20,8 @@ export class TheatresService {
     postTheatre(theatre: Theatre): Observable<Theatre> {
         return this.http.post('/api/theatres', theatre).map((response: Response) => {
             return <Theatre>response.json();
+        }).catch((error: any) => {
+            throw error.json();
         });
     }
 

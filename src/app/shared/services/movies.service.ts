@@ -20,6 +20,8 @@ export class MoviesService {
     postMovie(movie: Movie): Observable<Movie> {
         return this.http.post('/api/movies', movie).map((response: Response) => {
             return <Movie>response.json();
+        }).catch((error: any) => {
+            throw error.json();
         });
     }
 

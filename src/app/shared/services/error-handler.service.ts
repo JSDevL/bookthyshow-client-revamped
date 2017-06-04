@@ -1,23 +1,35 @@
-import { Injectable, Injector, ErrorHandler } from '@angular/core';
-import { Router } from '@angular/router';
+import {ErrorHandler, Injectable, Injector} from '@angular/core';
+import {Router} from '@angular/router';
+import * as _ from 'underscore';
 
 @Injectable()
 export class GlobalErrorHandler implements ErrorHandler {
 
-	public message;
-	private router;
+    public message;
+    private router;
 
-	constructor(private injector: Injector) {}
+    constructor(private injector: Injector) {
+    }
 
-	handleError(error: Error): void {
-		this.router = this.injector.get(Router);
+    handleError(error: any): void {
+        this.router = this.injector.get(Router);
 
-		this.message = error.message || error.toString();
+        if (_.isMatch(error, {'name': 'ValidationError'})) {
+            const message = _.reduce(error['errors'], function (memo, validationError) {
+                return memo + validationError['message'] + ' ';
+            }, '');
 
-		this.router.navigate(['error'], { queryParams: {
-			message: this.message
-		}});
+            return alert(message);
+        }
 
-		throw error;
-	}
+        this.message = error.message || error.toString();
+
+        this.router.navigate(['error'], {
+            queryParams: {
+                message: this.message
+            }
+        });
+
+        throw error;
+    }
 }

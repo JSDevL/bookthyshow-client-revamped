@@ -18,7 +18,10 @@ export class CitiesService {
     }
 
     postCity(city: City): Observable<City> {
-        return this.http.post('/api/cities', city).map((response: Response) => <City>response.json());
+        return this.http.post('/api/cities', city).map((response: Response) => <City>response.json())
+            .catch((error: any) => {
+                throw error.json();
+            });
     }
 
     getCities(): Observable<City[]> {

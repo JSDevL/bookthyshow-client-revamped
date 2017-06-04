@@ -16,7 +16,11 @@ export class MappingsService {
     }
 
     postMapping(mapping: Mapping): Observable<Mapping> {
-        return this.http.post('/api/mappings', mapping).map((response: Response) => <Mapping>response.json());
+        return this.http.post('/api/mappings', mapping)
+            .map((response: Response) => <Mapping>response.json())
+            .catch((error: any) => {
+                throw error.json();
+            });
     }
 
     getMappings(): Observable<Mapping[]> {
@@ -29,6 +33,9 @@ export class MappingsService {
 
     putMapping(mapping: Mapping): Observable<Mapping> {
         return this.http.put(`/api/mappings/${mapping._id}`, mapping)
-            .map((response: Response) => <Mapping>response.json());
+            .map((response: Response) => <Mapping>response.json())
+            .catch((error: any) => {
+                throw error.json();
+            });
     }
 }
