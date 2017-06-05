@@ -1,0 +1,26 @@
+#manage-mappings {
+    display: inline-block;
+    width: 100%;
+}
+
+.city-pill {
+    float: left;
+    margin: 0 20px 20px 0;
+
+    .btn-default:hover {
+        background-color: transparent;
+    }
+}
+
+form {
+    .btn-form-control {
+        padding: 0 0;
+    }
+    .form-control {
+        padding: 0 12px;
+        margin: 0;
+
+        border: none;
+        box-shadow: none;
+    }
+}

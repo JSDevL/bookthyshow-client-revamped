@@ -1,8 +1,70 @@
-<div *ngIf="!activeMapping">
-    not found. Create?
-    <button class="btn btn-default" (click)="createMapping()">Create</button>
+<div id="manage-mappings" *ngIf="selectedTheatre">
+    <div *ngIf="!activeMapping">
+        <p>No mapping found. Create a new mapping?</p>
+        <button class="btn btn-default" (click)="createMapping()">Create</button>
+    </div>
+
+    <ng-container *ngIf="activeMapping">
+        <div class="row">
+            <div class="col-xs-12">
+                <h4>Dates</h4>
+                <div *ngFor="let date of activeMapping.dates">
+                    <div class="city-pill btn-group">
+                        <button type="button" class="btn btn-default">{{date | date:'shortDate'}}</button>
+                        <button type="button" class="btn btn-default" (click)="deleteDate(date)"><span
+                            class="glyphicon glyphicon-trash"></span></button>
+                    </div>
+                </div>
+                <form (submit)="addDate()" #newDateForm="ngForm">
+                    <div class="city-pill btn-group">
+                        <button type="button" class="btn btn-default btn-form-control">
+                            <input type="date" style="height:32px;" class="form-control"
+                                   ngModel name="date"
+                                   required>
+                        </button>
+                        <button type="submit" class="btn btn-default" [disabled]="newDateForm.invalid"><span
+                            class="glyphicon glyphicon-plus"></span></button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-12">
+                <h4>Timings</h4>
+                <div *ngFor="let timing of activeMapping.timings">
+                    <div class="city-pill btn-group">
+                        <button type="button" class="btn btn-default">{{timing | date:'shortTime'}}</button>
+                        <button type="button" class="btn btn-default" (click)="deleteTiming(timing)"><span
+                            class="glyphicon glyphicon-trash"></span></button>
+                    </div>
+                </div>
+                <form (submit)="addTiming()" #newTimingForm="ngForm">
+                    <div class="city-pill btn-group">
+                        <button type="button" class="btn btn-default btn-form-control">
+                            <input type="time" style="height:32px;" class="form-control"
+                                   ngModel name="timing"
+                                   required>
+                        </button>
+                        <button type="submit" class="btn btn-default" [disabled]="newTimingForm.invalid"><span
+                            class="glyphicon glyphicon-plus"></span></button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="city-pill btn-group">
+                    <button type="button" class="btn btn-default btn-form-control" (click)="saveMapping()">Save</button>
+                    <button type="button" class="btn btn-default btn-form-control" (click)="deleteMapping()">Delete
+                    </button>
+                </div>
+            </div>
+        </div>
+    </ng-container>
 </div>
 
-<div *ngIf="activeMapping">
-    found
-</div>
+<p *ngIf="!selectedTheatre">Select a Movie and Theatre to search for mapping.</p>

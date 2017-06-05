@@ -29,8 +29,8 @@
                                      (selectTheatre)="onSelectedTheatre($event)"></app-manage-theatres>
 
                 <div class="page-header">
-                    <h3><b>Mappings</b> <i *ngIf="selectedTheatre">available for {{selectedTheatre.name}},
-                        {{selectedTheatre.location}}</i></h3>
+                    <h3><b>Mappings</b> <i *ngIf="selectedTheatre">for {{selectedTheatre.name}},
+                        {{selectedTheatre.location}}, {{selectedCity.name}}</i></h3>
                     <small>Map movies to theatres</small>
                 </div>
 
@@ -38,5 +38,6 @@
                                      [selectedMovie]="selectedMovie"></app-manage-mappings>
             </div>
         </div>
+        <hr>
     </div>
 </div>
