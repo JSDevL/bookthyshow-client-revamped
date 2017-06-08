@@ -8,6 +8,7 @@ import {AdminComponent} from '../../admin/admin.component';
 import {MoviesComponent} from '../../admin/movies/movies.component';
 import {TheatresComponent} from '../../admin/theatres/theatres.component';
 import {ErrorComponent} from '../../error/error.component';
+import {BookingComponent} from '../../booking/booking.component';
 
 import {MoviesService} from '../services/movies.service';
 import {MoviesResolveService} from './movies-resolve.service';
@@ -15,13 +16,17 @@ import {CitiesService} from '../services/cities.service';
 import {CitiesResolveService} from './cities-resolve.service';
 import {TheatresService} from '../services/theatres.service';
 import {TheatresResolveService} from './theatres-resolve.service';
-import {MappingsResolveService} from './mappings-resolve.service';
 import {MappingsService} from '../services/mappings.service';
+import {MappingsResolveService} from './mappings-resolve.service';
 
 const routes: Routes = [
     {
         path: '',
-        component: HomeComponent
+        component: HomeComponent,
+        resolve: {
+            mappings: MappingsResolveService,
+            cities: CitiesResolveService
+        }
     },
     {
         path: 'admin',
@@ -42,6 +47,13 @@ const routes: Routes = [
                 component: TheatresComponent
             }
         ]
+    },
+    {
+        path: 'booking',
+        component: BookingComponent,
+        resolve: {
+            'mappings': MappingsResolveService
+        }
     },
     {
         path: 'error',

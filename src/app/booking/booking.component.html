@@ -1,0 +1,16 @@
+<div class="jumbotron"
+     [ngStyle]="{'background-image': 'linear-gradient( rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.45) ), url(' + 'http://image.tmdb.org/t/p/w780/' + movie.backdrop_path + ')'}">
+    <hr class="invisible">
+    <div class="container">
+        <h2 class="pull-right"><span class="glyphicon glyphicon-heart"></span> <b>4.3</b></h2>
+        <h2><b>{{movie.title}}</b></h2>
+        <div class="btn-group">
+            <button type="button" class="genre btn btn-default btn-xs" *ngFor="let genre of movie.genres">
+                {{genre.name}}
+            </button>
+        </div>
+
+        <h4><span class="glyphicon glyphicon-time"></span> {{movie.runtime}}min</h4>
+    </div>
+    <hr class="invisible">
+</div>

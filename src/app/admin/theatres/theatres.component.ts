@@ -39,6 +39,7 @@ export class TheatresComponent implements OnInit, OnDestroy {
 
     onSelectedCity(city: City): void {
         this.selectedCity = city;
+        this.selectedTheatre = undefined;
     }
 
     ngOnDestroy() {

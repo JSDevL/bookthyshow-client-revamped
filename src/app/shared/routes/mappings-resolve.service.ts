@@ -11,7 +11,7 @@ export class MappingsResolveService implements Resolve<Mapping[]> {
     }
 
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Mapping[]> | Promise<Mapping[]> | Mapping[] {
-        return this.mappingsService.getMappings();
+        return this.mappingsService.getMappings(route.queryParams);
     }
 
 }

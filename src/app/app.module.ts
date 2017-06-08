@@ -1,6 +1,6 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {ErrorHandler, NgModule} from '@angular/core';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpModule} from '@angular/http';
 import {RoutesModule} from './shared/routes/routes.module';
 
@@ -18,6 +18,8 @@ import {CitiesComponent} from './admin/theatres/manage-cities/manage-cities.comp
 import {FilterPipe} from './shared/pipes/filter.pipe';
 import {ManageTheatresComponent} from './admin/theatres/manage-theatres/manage-theatres.component';
 import {ManageMappingsComponent} from './admin/theatres/manage-mappings/manage-mappings.component';
+import {BookingComponent} from './booking/booking.component';
+import {UniqPipe} from './shared/pipes/uniq.pipe';
 
 @NgModule({
     declarations: [
@@ -32,11 +34,14 @@ import {ManageMappingsComponent} from './admin/theatres/manage-mappings/manage-m
         CitiesComponent,
         FilterPipe,
         ManageTheatresComponent,
-        ManageMappingsComponent
+        ManageMappingsComponent,
+        BookingComponent,
+        UniqPipe
     ],
     imports: [
         BrowserModule,
         FormsModule,
+        ReactiveFormsModule,
         HttpModule,
         RoutesModule
     ],

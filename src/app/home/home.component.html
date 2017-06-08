@@ -53,7 +53,7 @@
                 </div>
 
                 <button class="btn btn-default btn-greened form-control" [routerLink]="['booking']"
-                        [queryParams]="{'city_id': movieSearchForm.value['city_id'], 'movie_id': mapping.movie._id}">
+                        [queryParams]="{'theatre.city_id': mapping.theatre.city_id, 'movie._id': mapping.movie._id}">
                     <b>Book</b>
                 </button>
             </div>
