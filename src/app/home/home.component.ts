@@ -20,7 +20,6 @@ export class HomeComponent implements OnInit, OnDestroy {
 
     public cities: City[];
     public mappings: Mapping[];
-    public mappingsByCityId: any;
 
     private dataSubscription: Subscription;
 
@@ -32,15 +31,6 @@ export class HomeComponent implements OnInit, OnDestroy {
 
             this.cities = data['cities'];
             this.mappings = data['mappings'];
-
-            _.map(this.mappings, (mapping: Mapping) => {
-                _.extend(mapping, {
-                    'movie_id': mapping.movie._id,
-                    'theatre_id': mapping.theatre._id,
-                });
-            });
-
-            this.mappingsByCityId = _.groupBy(this.mappings, (mapping: Mapping) => mapping.theatre['city_id']);
 
             this.movieSearchForm = new FormGroup({
                 'city_id': new FormControl(this.cities[0]._id, Validators.required),
