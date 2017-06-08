@@ -26,7 +26,7 @@
             <b>Found <span class="greened">{{searchResults.length}}</span> titles</b>
         </h5>
         <div class="row">
-            <div *ngFor="let mapping of searchResults" class="col-xs-3">
+            <div *ngFor="let mapping of searchResults | uniq:'movie_id'" class="col-xs-3">
                 <img [src]="'http://image.tmdb.org/t/p/w185/'+mapping.movie.backdrop_path">
                 <h5>{{mapping.movie.title}}</h5>
             </div>
@@ -41,7 +41,8 @@
     </h4>
 
     <div class="row masonry">
-        <div *ngFor="let mapping of mappingsByCityId[movieSearchForm.value['city_id']]" class="col-xs-2 item">
+        <div *ngFor="let mapping of mappingsByCityId[movieSearchForm.value['city_id']] | uniq:'movie_id'"
+             class="col-xs-2 item">
             <div class="thumbnail">
                 <img [src]="'http://image.tmdb.org/t/p/w185/'+mapping.movie.poster_path" alt="No Poster">
 
@@ -50,7 +51,8 @@
                     <h6><b>{{mapping.movie.release_date | date:'mediumDate'}}</b></h6>
                 </div>
 
-                <button class="btn btn-default btn-greened form-control"><b>Book</b></button>
+                <button class="btn btn-default btn-greened form-control" [routerLink]="['booking']"
+                        [queryParams]="{'mapping_id': mapping._id}"><b>Book</b></button>
             </div>
         </div>
     </div>

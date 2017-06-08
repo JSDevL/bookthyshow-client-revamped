@@ -29,8 +29,16 @@ export class HomeComponent implements OnInit, OnDestroy {
 
     ngOnInit() {
         this.dataSubscription = this.route.data.subscribe((data: Data) => {
+
             this.cities = data['cities'];
             this.mappings = data['mappings'];
+
+            _.map(this.mappings, (mapping: Mapping) => {
+                _.extend(mapping, {
+                    'movie_id': mapping.movie._id,
+                    'theatre_id': mapping.theatre._id,
+                });
+            });
 
             this.mappingsByCityId = _.groupBy(this.mappings, (mapping: Mapping) => mapping.theatre['city_id']);
 
