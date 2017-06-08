@@ -1,3 +1,58 @@
-<p>
-  home works!
-</p>
+<div id="home-banner">
+    <div class="container">
+        <h1 style="font-size:5rem;" class="brand">Book<span>Thy</span>Show</h1>
+        <h4><b>Select <span class="greened">thy</span> flick, book with a Click.</b></h4>
+        <hr class="invisible">
+        <form [formGroup]="movieSearchForm">
+            <div class="city-pill btn-group">
+                <button type="button" class="btn btn-default btn-form-control">
+                    <select class="form-control"
+                            [formControlName]="'city_id'">
+                        <option *ngFor="let city of cities" [value]="city._id">{{city.name}}</option>
+                    </select>
+                </button>
+                <button type="submit" class="btn btn-default  btn-form-control">
+                    <input class="form-control" type="text" placeholder="Search movie" style="min-width: 400px"
+                           [formControlName]="'query'">
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div id="search-results" *ngIf="searchResults.length">
+    <div class="container">
+        <h5>
+            <b>Found <span class="greened">{{searchResults.length}}</span> titles</b>
+        </h5>
+        <div class="row">
+            <div *ngFor="let mapping of searchResults" class="col-xs-3">
+                <img [src]="'http://image.tmdb.org/t/p/w185/'+mapping.movie.backdrop_path">
+                <h5>{{mapping.movie.title}}</h5>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <hr class="invisible">
+    <h4>
+        <b>Now Showing</b>
+    </h4>
+
+    <div class="row masonry">
+        <div *ngFor="let mapping of mappingsByCityId[movieSearchForm.value['city_id']]" class="col-xs-2 item">
+            <div class="thumbnail">
+                <img [src]="'http://image.tmdb.org/t/p/w185/'+mapping.movie.poster_path" alt="No Poster">
+
+                <div class="caption">
+                    <h5><b>{{mapping.movie.title}}</b></h5>
+                    <h6><b>{{mapping.movie.release_date | date:'mediumDate'}}</b></h6>
+                </div>
+
+                <button class="btn btn-default btn-greened form-control"><b>Book</b></button>
+            </div>
+        </div>
+    </div>
+    <hr class="invisible">
+</div>

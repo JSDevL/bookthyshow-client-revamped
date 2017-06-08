@@ -65,3 +65,17 @@ footer {
 .page-header {
     border-color: #ccc;
 }
+
+.btn-greened {
+    background-color: $primary-green;
+    color: white;
+
+    &:hover {
+        background-color: $secondary-green;
+        color: white;
+    }
+}
+
+.greened {
+    color: $primary-green;
+}

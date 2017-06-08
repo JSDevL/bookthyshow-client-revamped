@@ -1,17 +1,17 @@
 @import '../../../_variables';
 
-form{
-	td{
-		vertical-align: middle;
+form {
+    td {
+        vertical-align: middle;
 
-		.form-group{
-			margin: 0px;
-		}
+        .form-group {
+            margin: 0px;
+        }
 
-		label{
-			margin: 0px;
-		}
-	}
+        label {
+            margin: 0px;
+        }
+    }
 }
 
 .masonry { /* Masonry container */
@@ -22,40 +22,40 @@ form{
     display: inline-block;
     width: 100%;
 
-	overflow: hidden; /* Fix for firefox and IE 10-11  */
-	-webkit-column-break-inside: avoid; /* Chrome, Safari, Opera */
-	page-break-inside: avoid; /* Firefox */
-	break-inside: avoid; /* IE 10+ */
-	break-inside: avoid-column;
+    overflow: hidden; /* Fix for firefox and IE 10-11  */
+    -webkit-column-break-inside: avoid; /* Chrome, Safari, Opera */
+    page-break-inside: avoid; /* Firefox */
+    break-inside: avoid; /* IE 10+ */
+    break-inside: avoid-column;
 
-	position: relative;
+    position: relative;
 
-	.thumbnail{
-		background-color: transparent;
-	}
+    .thumbnail {
+        background-color: transparent;
+    }
 }
 
-.thumbnail .image{
-	display: inline-block;
-	position: relative;
+.thumbnail .image {
+    display: inline-block;
+    position: relative;
 }
 
-.thumbnail .image button{
-	content:'sdfsdf';
-	display: none;
-	width: 100%;
-	height: 100%;
+.thumbnail .image button {
+    content: 'sdfsdf';
+    display: none;
+    width: 100%;
+    height: 100%;
 
-	position: absolute;
-	top: 0px;
-	left: 0px;
-	z-index: 1;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: 1;
 
-	background: rgba(0,0,0,0.8);
-	color: white;
-	border: none;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    border: none;
 }
 
-.thumbnail .image:hover button{
-	display: block;
+.thumbnail .image:hover button {
+    display: block;
 }
