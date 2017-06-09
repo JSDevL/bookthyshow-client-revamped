@@ -24,7 +24,7 @@ export class GlobalErrorHandler implements ErrorHandler {
 
         this.message = error.message || error.toString();
 
-        this.router.navigate(['error'], {
+        this.router.navigate(['/error'], {
             queryParams: {
                 message: this.message
             }

@@ -20,6 +20,7 @@ import {ManageTheatresComponent} from './admin/theatres/manage-theatres/manage-t
 import {ManageMappingsComponent} from './admin/theatres/manage-mappings/manage-mappings.component';
 import {BookingComponent} from './booking/booking.component';
 import {UniqPipe} from './shared/pipes/uniq.pipe';
+import {SelectDateTimeComponent} from './booking/select-date-time/select-date-time.component';
 
 @NgModule({
     declarations: [
@@ -36,7 +37,8 @@ import {UniqPipe} from './shared/pipes/uniq.pipe';
         ManageTheatresComponent,
         ManageMappingsComponent,
         BookingComponent,
-        UniqPipe
+        UniqPipe,
+        SelectDateTimeComponent
     ],
     imports: [
         BrowserModule,

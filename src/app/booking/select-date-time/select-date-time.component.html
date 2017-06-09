@@ -1,0 +1,38 @@
+<div id="select-date-time">
+    <div id="date-select">
+        <div class="container">
+            <div><label>Select Date</label></div>
+            <div class="btn-group" role="group" aria-label="...">
+                <button class="btn btn-default date"
+                        [ngClass]="{'active': newBooking?.date === date}"
+                        *ngFor="let date of availableDates"
+                        (click)="onDateSelect(date)">
+                    <h4><b>{{date | date:'dd'}}</b></h4>{{date | date:'EEE'}}
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="time-select">
+        <div class="container">
+            <div><label>Select Time</label></div>
+            <ul class="list-group">
+                <li class="list-group-item" *ngFor="let mapping of mappings">
+                    <div class="row">
+                        <div class="col-xs-2">
+                            {{mapping.theatre.name}}
+                        </div>
+                        <div class="col-xs-10">
+                            <button class="btn btn-default time"
+                                    [ngClass]="{'active': newBooking?.timing === timing}"
+                                    *ngFor="let timing of mapping.timings"
+                                    (click)="onTimingSelect(timing)">
+                                {{timing | date:'shortTime'}}
+                            </button>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
