@@ -21,6 +21,8 @@ import {ManageMappingsComponent} from './admin/theatres/manage-mappings/manage-m
 import {BookingComponent} from './booking/booking.component';
 import {UniqPipe} from './shared/pipes/uniq.pipe';
 import {SelectDateTimeComponent} from './booking/select-date-time/select-date-time.component';
+import {SelectSeatsComponent} from './booking/select-seats/select-seats.component';
+import {SeatsGridComponent} from './booking/select-seats/seats-grid/seats-grid.component';
 
 @NgModule({
     declarations: [
@@ -38,7 +40,9 @@ import {SelectDateTimeComponent} from './booking/select-date-time/select-date-ti
         ManageMappingsComponent,
         BookingComponent,
         UniqPipe,
-        SelectDateTimeComponent
+        SelectDateTimeComponent,
+        SelectSeatsComponent,
+        SeatsGridComponent
     ],
     imports: [
         BrowserModule,

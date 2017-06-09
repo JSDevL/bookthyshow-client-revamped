@@ -4,7 +4,7 @@ import {Observable} from 'rxjs/Observable';
 import {Subject} from 'rxjs/Subject';
 
 @Injectable()
-export class BookingService {
+export class BookingsService {
 
     newBookingSource: Subject<Booking>;
     newBooking$: Observable<Booking>;

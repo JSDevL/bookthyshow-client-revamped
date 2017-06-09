@@ -10,6 +10,7 @@ import {TheatresComponent} from '../../admin/theatres/theatres.component';
 import {ErrorComponent} from '../../error/error.component';
 import {BookingComponent} from '../../booking/booking.component';
 import {SelectDateTimeComponent} from '../../booking/select-date-time/select-date-time.component';
+import {SelectSeatsComponent} from '../../booking/select-seats/select-seats.component';
 
 import {MoviesService} from '../services/movies.service';
 import {MoviesResolveService} from './movies-resolve.service';
@@ -64,6 +65,10 @@ const routes: Routes = [
             {
                 path: 'select-date-time',
                 component: SelectDateTimeComponent
+            },
+            {
+                path: 'select-seats',
+                component: SelectSeatsComponent
             }
         ]
     },

@@ -1,0 +1,27 @@
+<h5><b>SOFA Rs.240</b></h5>
+<table class="table">
+    <tr *ngFor="let row of rows  | slice:0:2">
+        <td><b>{{row}}</b></td>
+        <td *ngFor="let col of columns">
+            <div class="seat">{{col}}</div>
+        </td>
+    </tr>
+</table>
+<h5><b>GOLD Rs.180</b></h5>
+<table class="table">
+    <tr *ngFor="let row of rows  | slice:2:6">
+        <td><b>{{row}}</b></td>
+        <td *ngFor="let col of columns">
+            <div class="seat">{{col}}</div>
+        </td>
+    </tr>
+</table>
+<h5><b>ECONOMY Rs.120</b></h5>
+<table class="table">
+    <tr *ngFor="let row of rows  | slice:6">
+        <td><b>{{row}}</b></td>
+        <td *ngFor="let col of columns">
+            <div class="seat">{{col}}</div>
+        </td>
+    </tr>
+</table>

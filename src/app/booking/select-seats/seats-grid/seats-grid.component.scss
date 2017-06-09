@@ -1,0 +1,36 @@
+@import '../../../_variables';
+
+h5 {
+    text-align: center;
+}
+
+table {
+    td {
+        vertical-align: middle;
+        text-align: center;
+    }
+}
+
+.seat {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+
+    border: 1px #333 solid;
+    border-radius: 5px;
+
+    cursor: pointer;
+}
+
+.seat.blocked {
+    opacity: 0.2;
+}
+
+.seat.selected {
+    background-color: $primary-green;
+    color: white;
+}
+
+.seat.reserved {
+    background-color: #aaa;
+}

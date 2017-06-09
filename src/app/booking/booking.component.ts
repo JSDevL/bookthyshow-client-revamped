@@ -3,13 +3,13 @@ import {ActivatedRoute, Data} from '@angular/router';
 import {Subscription} from 'rxjs/Subscription';
 import {Movie} from '../shared/models/movie.model';
 import {MappingsService} from '../shared/services/mappings.service';
-import {BookingService} from './bookings.service';
+import {BookingsService} from './bookings.service';
 
 @Component({
     selector: 'app-booking',
     templateUrl: './booking.component.html',
     styleUrls: ['./booking.component.scss'],
-    providers: [MappingsService, BookingService]
+    providers: [MappingsService, BookingsService]
 })
 export class BookingComponent implements OnInit, OnDestroy {
 
@@ -18,7 +18,7 @@ export class BookingComponent implements OnInit, OnDestroy {
 
     constructor(private route: ActivatedRoute,
                 private mappingsService: MappingsService,
-                private bookingService: BookingService) {
+                private bookingService: BookingsService) {
     }
 
     ngOnInit() {
@@ -27,7 +27,7 @@ export class BookingComponent implements OnInit, OnDestroy {
     onRouteActive(e) {
         this.dataSubscription = this.route.data.subscribe((data: Data) => {
             this.mappingsService.mappingsSource.next(data['mappings']);
-            this.movie = Object.create(data['mappings'][0].movie);
+            this.movie = data['mappings'][0].movie;
 
             this.bookingService.newBookingSource.next({
                 movie: this.movie

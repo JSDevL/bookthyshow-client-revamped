@@ -3,8 +3,9 @@ import {Mapping} from '../../shared/models/mapping.model';
 import {Subscription} from 'rxjs/Subscription';
 import {MappingsService} from '../../shared/services/mappings.service';
 import * as _ from 'underscore';
-import {BookingService} from '../bookings.service';
+import {BookingsService} from '../bookings.service';
 import {Booking} from '../../shared/models/booking.model';
+import {Router} from '@angular/router';
 
 @Component({
     selector: 'app-select-date-time',
@@ -21,7 +22,9 @@ export class SelectDateTimeComponent implements OnInit, OnDestroy {
 
     public availableDates: Date[];
 
-    constructor(private mappingsService: MappingsService, private bookingsService: BookingService) {
+    constructor(private mappingsService: MappingsService,
+                private bookingsService: BookingsService,
+                private router: Router) {
     }
 
     ngOnInit() {
@@ -34,7 +37,7 @@ export class SelectDateTimeComponent implements OnInit, OnDestroy {
             this.newBooking = booking;
 
             if (this.newBooking.date && this.newBooking.timing) {
-                alert('selected');
+                this.router.navigate(['/booking', 'select-seats']);
             }
         });
     }
@@ -51,7 +54,6 @@ export class SelectDateTimeComponent implements OnInit, OnDestroy {
 
     ngOnDestroy() {
         this.mappingsSubscription.unsubscribe();
-        this.newBookingSubscription.unsubscribe();
     }
 
 }
