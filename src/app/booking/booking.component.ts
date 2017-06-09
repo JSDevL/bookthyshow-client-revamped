@@ -4,6 +4,7 @@ import {Subscription} from 'rxjs/Subscription';
 import {Movie} from '../shared/models/movie.model';
 import {MappingsService} from '../shared/services/mappings.service';
 import {BookingsService} from './bookings.service';
+import {Booking} from '../shared/models/booking.model';
 
 @Component({
     selector: 'app-booking',
@@ -13,8 +14,11 @@ import {BookingsService} from './bookings.service';
 })
 export class BookingComponent implements OnInit, OnDestroy {
 
-    movie: Movie;
-    dataSubscription: Subscription;
+    public newBooking: Booking;
+    private newBookingSubscription: Subscription;
+
+    public movie: Movie;
+    private dataSubscription: Subscription;
 
     constructor(private route: ActivatedRoute,
                 private mappingsService: MappingsService,
@@ -25,17 +29,24 @@ export class BookingComponent implements OnInit, OnDestroy {
     }
 
     onRouteActive(e) {
+        this.newBookingSubscription = this.bookingService.newBooking$.subscribe((newBooking: Booking) => {
+            this.newBooking = newBooking;
+        });
+
         this.dataSubscription = this.route.data.subscribe((data: Data) => {
-            this.mappingsService.mappingsSource.next(data['mappings']);
             this.movie = data['mappings'][0].movie;
 
-            this.bookingService.newBookingSource.next({
-                movie: this.movie
-            });
+            if (!this.newBooking) {
+                this.newBooking = {movie: data['mappings'][0].movie};
+            }
+
+            this.mappingsService.mappingsSource.next(data['mappings']);
+            this.bookingService.newBookingSource.next(this.newBooking);
         });
     }
 
     ngOnDestroy() {
+        this.newBookingSubscription.unsubscribe();
         this.dataSubscription.unsubscribe();
     }
 
