@@ -1,0 +1,46 @@
+<div class="panel panel-default">
+    <!-- Default panel contents -->
+    <div class="panel-heading">
+        <h5><a class="brand">Book<span>Thy</span>Show</a>
+            <small>Order Summary</small>
+        </h5>
+    </div>
+
+    <div class="panel-body">
+        <h3><b>{{newBooking.movie.title}}</b></h3>
+        <hr/>
+        <h3>{{newBooking.theatre.name}} {{newBooking.theatre.location}}</h3>
+        <div class="btn-group btn-group-xs">
+            <p class="btn btn-default">
+                {{newBooking.date | date:'shortDate'}}
+            </p>
+            <p class="btn btn-default">
+                {{newBooking.timing | date:'shortTime'}}
+            </p>
+        </div>
+    </div>
+
+    <!-- List group -->
+    <!--<ul class="list-group">-->
+    <!--<li class="list-group-item bg-red">-->
+    <!--<p><b>Class</b></p>-->
+    <!--<p>{{bookingService.selectedClass}} </p>-->
+    <!--</li>-->
+    <!--<li class="list-group-item bg-red">-->
+    <!--<p><b>Selected Seats</b></p>-->
+    <!--<div class="btn-group btn-group-xs">-->
+    <!--<p *ngIf="!bookingService.selectedSeats.length">No Seats selected</p>-->
+    <!--<p class="btn btn-default" *ngFor="let seat of bookingService.selectedSeats">{{seat.row}}{{seat.col}}</p>-->
+    <!--</div>-->
+    <!--</li>-->
+    <!--<li class="list-group-item">-->
+    <!--<p class="label-left"><b>Ticket Total:</b></p>-->
+    <!--<p class="label-right">Rs {{classPricing[bookingService.selectedClass] * bookingService.selectedSeats.length}}</p>-->
+    <!--<hr>-->
+    <!--<p class="label-left"><b>Amount Payable:</b></p>-->
+    <!--<p class="label-right">Rs {{classPricing[bookingService.selectedClass] * bookingService.selectedSeats.length + tax}}</p>-->
+    <!--</li>-->
+    <!--</ul>-->
+</div>
+
+<button class="btn btn-default red form-control" (click)="proceed()">Proceed</button>
