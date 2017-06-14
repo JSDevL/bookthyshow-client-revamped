@@ -23,6 +23,8 @@ import {UniqPipe} from './shared/pipes/uniq.pipe';
 import {SelectDateTimeComponent} from './booking/select-date-time/select-date-time.component';
 import {SelectSeatsComponent} from './booking/select-seats/select-seats.component';
 import {SeatsGridComponent} from './booking/select-seats/seats-grid/seats-grid.component';
+import {NumToCharPipe} from './shared/pipes/num-to-char.pipe';
+import {BookingOverviewComponent} from './booking/select-seats/booking-overview/booking-overview.component';
 
 @NgModule({
     declarations: [
@@ -42,7 +44,9 @@ import {SeatsGridComponent} from './booking/select-seats/seats-grid/seats-grid.c
         UniqPipe,
         SelectDateTimeComponent,
         SelectSeatsComponent,
-        SeatsGridComponent
+        SeatsGridComponent,
+        NumToCharPipe,
+        BookingOverviewComponent
     ],
     imports: [
         BrowserModule,

@@ -6,5 +6,6 @@ export interface Booking {
     theatre?: Theatre;
     date?: Date;
     timing?: Date;
+    selectedSeats?: { row: number, col: number }[];
 }
 ;
