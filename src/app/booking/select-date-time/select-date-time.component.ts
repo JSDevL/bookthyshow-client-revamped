@@ -6,6 +6,7 @@ import * as _ from 'underscore';
 import {BookingsService} from '../bookings.service';
 import {Booking} from '../../shared/models/booking.model';
 import {Router} from '@angular/router';
+import {Theatre} from '../../shared/models/theatre.model';
 
 @Component({
     selector: 'app-select-date-time',
@@ -47,8 +48,9 @@ export class SelectDateTimeComponent implements OnInit, OnDestroy {
         this.bookingsService.newBookingSource.next(this.newBooking);
     }
 
-    onTimingSelect(timing: Date) {
+    onTimingSelect(timing: Date, theatre: Theatre) {
         this.newBooking.timing = timing;
+        this.newBooking.theatre = theatre;
         this.bookingsService.newBookingSource.next(this.newBooking);
     }
 

@@ -26,7 +26,7 @@
                             <button class="btn btn-default time"
                                     [ngClass]="{'active': newBooking?.timing === timing}"
                                     *ngFor="let timing of mapping.timings"
-                                    (click)="onTimingSelect(timing)">
+                                    (click)="onTimingSelect(timing, mapping.theatre)">
                                 {{timing | date:'shortTime'}}
                             </button>
                         </div>
