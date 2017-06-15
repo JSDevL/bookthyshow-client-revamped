@@ -1,4 +1,4 @@
-<div class="panel panel-default">
+<div *ngIf="newBooking" class="panel panel-default">
     <!-- Default panel contents -->
     <div class="panel-heading">
         <h5><a class="brand">Book<span>Thy</span>Show</a>
@@ -7,9 +7,9 @@
     </div>
 
     <div class="panel-body">
-        <h3><b>{{newBooking.movie.title}}</b></h3>
+        <h4><b>{{newBooking.movie.title}}</b></h4>
         <hr/>
-        <h3>{{newBooking.theatre.name}} {{newBooking.theatre.location}}</h3>
+        <h5>{{newBooking.theatre.name}} {{newBooking.theatre.location}}</h5>
         <div class="btn-group btn-group-xs">
             <p class="btn btn-default">
                 {{newBooking.date | date:'shortDate'}}
@@ -20,27 +20,29 @@
         </div>
     </div>
 
-    <!-- List group -->
-    <!--<ul class="list-group">-->
-    <!--<li class="list-group-item bg-red">-->
-    <!--<p><b>Class</b></p>-->
-    <!--<p>{{bookingService.selectedClass}} </p>-->
-    <!--</li>-->
-    <!--<li class="list-group-item bg-red">-->
-    <!--<p><b>Selected Seats</b></p>-->
-    <!--<div class="btn-group btn-group-xs">-->
-    <!--<p *ngIf="!bookingService.selectedSeats.length">No Seats selected</p>-->
-    <!--<p class="btn btn-default" *ngFor="let seat of bookingService.selectedSeats">{{seat.row}}{{seat.col}}</p>-->
-    <!--</div>-->
-    <!--</li>-->
-    <!--<li class="list-group-item">-->
-    <!--<p class="label-left"><b>Ticket Total:</b></p>-->
-    <!--<p class="label-right">Rs {{classPricing[bookingService.selectedClass] * bookingService.selectedSeats.length}}</p>-->
-    <!--<hr>-->
-    <!--<p class="label-left"><b>Amount Payable:</b></p>-->
-    <!--<p class="label-right">Rs {{classPricing[bookingService.selectedClass] * bookingService.selectedSeats.length + tax}}</p>-->
-    <!--</li>-->
-    <!--</ul>-->
+    <ul class="list-group">
+        <li class="list-group-item">
+            <p><b>Class</b></p>
+            <p *ngIf="!newBooking.seatClass">No Seats selected</p>
+            <p>{{newBooking.seatClass}} </p>
+        </li>
+        <li class="list-group-item">
+            <p><b>Selected Seats</b></p>
+            <p *ngIf="!newBooking.selectedSeats.length">No Seats selected</p>
+            <p class="btn btn-default btn-xs" *ngFor="let seat of newBooking.selectedSeats">
+                {{seat.row | numToChar}}{{seat.col}}</p>
+        </li>
+        <li *ngIf="newBooking.selectedSeats.length" class="list-group-item">
+            <p class="label-left"><b>Ticket Total:</b></p>
+            <p class="label-right">Rs {{classPricing[newBooking.seatClass] *
+                newBooking.selectedSeats.length}}</p>
+            <hr>
+            <p class="label-left"><b>Amount Payable:</b></p>
+            <p class="label-right">Rs {{classPricing[newBooking.seatClass] * newBooking.selectedSeats.length
+                + tax}}</p>
+        </li>
+        <li *ngIf="newBooking.selectedSeats.length" class="list-group-item button">
+            <button class="btn btn-default btn-greened form-control" (click)="proceed()">Proceed</button>
+        </li>
+    </ul>
 </div>
-
-<button class="btn btn-default red form-control" (click)="proceed()">Proceed</button>

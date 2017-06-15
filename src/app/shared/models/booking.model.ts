@@ -7,5 +7,5 @@ export interface Booking {
     date?: Date;
     timing?: Date;
     selectedSeats?: { row: number, col: number }[];
+    seatClass?: String;
 }
-;

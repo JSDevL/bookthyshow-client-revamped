@@ -1,0 +1,47 @@
+@import '../../../_variables';
+
+.panel {
+    background-color: white;
+
+    hr {
+        border-style: dashed;
+        border-width: 1px;
+    }
+
+    .panel-heading {
+        color: white;
+        background: $bg-dark;
+    }
+
+    .list-group-item {
+        background-color: transparent;
+
+        .label-left {
+            float: left;
+        }
+
+        .label-right {
+            text-align: right;
+        }
+
+        &.button {
+            padding: 0;
+        }
+    }
+}
+
+.btn-greened {
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+
+    &:hover {
+        outline: 5px solid $secondary-green;
+    }
+
+    &:active {
+        outline: 5px solid $secondary-green;
+        color: white;
+        background-color: $secondary-green;
+    }
+}

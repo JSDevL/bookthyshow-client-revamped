@@ -5,7 +5,7 @@
         <td *ngFor="let seat of grid[r]; let c = index">
             <div class="seat"
                  [ngClass]="{'selected': seat.status === 'selected'}"
-                 (click)="selectSeat.emit(seat)">
+                 (click)="onSeatClick(seat, 'SOFA')">
                 {{c}}
             </div>
         </td>
@@ -18,7 +18,7 @@
         <td *ngFor="let seat of grid[(r + 2)]; let c = index">
             <div class="seat"
                  [ngClass]="{'selected': seat.status === 'selected'}"
-                 (click)="selectSeat.emit(seat)">
+                 (click)="onSeatClick(seat, 'GOLD')">
                 {{c}}
             </div>
         </td>
@@ -31,7 +31,7 @@
         <td *ngFor="let seat of grid[(r + 6)]; let c = index">
             <div class="seat"
                  [ngClass]="{'selected': seat.status === 'selected'}"
-                 (click)="selectSeat.emit(seat)">
+                 (click)="onSeatClick(seat, 'ECONOMY')">
                 {{c}}
             </div>
         </td>
