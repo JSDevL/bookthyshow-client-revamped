@@ -1,3 +1,120 @@
-<p>
-    payment works!
-</p>
+<div class="modal fade" bsModal #bookingModal="bs-modal" tabindex="-1"
+     (onHidden)="proceed()">
+    <div class="modal-dialog modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title pull-left">Booking Confirmed!</h4>
+                <button type="button" class="close pull-right" aria-label="Close" (click)="bookingModal.hide()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <h5>Please note your booking ID:</h5>
+                <b>{{newBooking?._id}}</b>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="newBooking" class="container">
+    <div class="row">
+        <div class="col-xs-8">
+            <div class="panel panel-default">
+                <div class="panel-heading">Payment Information</div>
+                <div class="panel-body">
+                    <form (submit)="postBooking()" class="form-horizontal" #newBookingForm="ngForm">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Name*</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" placeholder="Name"
+                                       ngModel
+                                       name="name"
+                                       required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Email*</label>
+                            <div class="col-sm-10">
+                                <input type="email" class="form-control" placeholder="Email"
+                                       ngModel
+                                       name="email"
+                                       required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Card Number*</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" placeholder="Card Number"
+                                       ngModel
+                                       name="card_no"
+                                       minlength="10"
+                                       maxlength="10">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Expiry*</label>
+                            <div class="col-sm-10">
+                                <div class="row">
+                                    <div class="col-xs-6">
+                                        <select class="form-control"
+                                                ngModel
+                                                name="expiry_month"
+                                                required>
+                                            <option
+                                                *ngFor='let month of ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]'
+                                                [value]="month">{{month}}
+                                            </option>
+                                        </select>
+                                    </div>
+                                    <div class="col-xs-6">
+                                        <select class="form-control"
+                                                ngModel
+                                                name="expiry_year"
+                                                required>
+                                            <option *ngFor="let year of [2017, 2018, 2019]" [value]="year">{{year}}
+                                            </option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">CVV*</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" placeholder="CVV"
+                                       ngModel
+                                       minlength="3"
+                                       maxlength="3"
+                                       name="cvv"
+                                       required>
+                            </div>
+                        </div>
+                        <button class="btn btn-default btn-greened form-control" type="submit"
+                                [disabled]="newBookingForm.invalid">Make Payment
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xs-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">Order Summary</div>
+                <div class="panel-body">
+                    <h3>{{newBooking.movie.title}}</h3>
+                    <h4>{{newBooking.theatre.name}}</h4>
+                    <hr>
+                    <h5>{{newBooking.selectedSeats.length}} {{newBooking.selectedSeats.length === 1 ? 'seat' :
+                        'seats'}}</h5>
+                    <h5>{{newBooking.date | date:'shortDate'}} | {{newBooking.timing | date:'shortTime'}}</h5>
+                    <h5>{{newBooking.seatClass}}</h5>
+                </div>
+                <div class="panel-footer">
+                    <b>Amount payable:</b>
+                    <span class="pull-right">Rs {{classPricing[newBooking.seatClass] * newBooking.selectedSeats.length + tax}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

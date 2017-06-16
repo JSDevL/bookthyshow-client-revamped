@@ -30,10 +30,6 @@ export class BookingOverviewComponent implements OnInit, OnDestroy {
         });
     }
 
-    proceed() {
-        this.router.navigate(['booking', 'payment']);
-    }
-
     ngOnDestroy() {
         this.newBookingSubscription.unsubscribe();
     }

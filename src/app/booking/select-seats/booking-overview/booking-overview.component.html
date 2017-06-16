@@ -42,7 +42,8 @@
                 + tax}}</p>
         </li>
         <li *ngIf="newBooking.selectedSeats.length" class="list-group-item button">
-            <button class="btn btn-default btn-greened form-control" (click)="proceed()">Proceed</button>
+            <button class="btn btn-default btn-greened form-control" [routerLink]="['/booking', 'payment']">Proceed
+            </button>
         </li>
     </ul>
 </div>

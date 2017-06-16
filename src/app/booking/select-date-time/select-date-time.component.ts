@@ -55,6 +55,7 @@ export class SelectDateTimeComponent implements OnInit, OnDestroy {
     }
 
     ngOnDestroy() {
+        this.newBookingSubscription.unsubscribe();
         this.mappingsSubscription.unsubscribe();
     }
 

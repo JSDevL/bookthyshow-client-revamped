@@ -1,0 +1,20 @@
+@import '../../_variables';
+
+.btn-greened {
+    color: white;
+    background-color: $primary-green;
+
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+
+    &:hover {
+        color: white;
+        background-color: $secondary-green;
+    }
+
+    &:active {
+        color: white;
+        background-color: $secondary-green;
+    }
+}

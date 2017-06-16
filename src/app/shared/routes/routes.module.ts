@@ -11,6 +11,7 @@ import {ErrorComponent} from '../../error/error.component';
 import {BookingComponent} from '../../booking/booking.component';
 import {SelectDateTimeComponent} from '../../booking/select-date-time/select-date-time.component';
 import {SelectSeatsComponent} from '../../booking/select-seats/select-seats.component';
+import {PaymentComponent} from '../../booking/payment/payment.component';
 
 import {MoviesService} from '../services/movies.service';
 import {MoviesResolveService} from './movies-resolve.service';
@@ -20,6 +21,8 @@ import {TheatresService} from '../services/theatres.service';
 import {TheatresResolveService} from './theatres-resolve.service';
 import {MappingsService} from '../services/mappings.service';
 import {MappingsResolveService} from './mappings-resolve.service';
+import {BookingsResolveService} from './bookings-resolve.service';
+import {BookingsService} from '../../booking/bookings.service';
 
 const routes: Routes = [
     {
@@ -68,7 +71,14 @@ const routes: Routes = [
             },
             {
                 path: 'select-seats',
-                component: SelectSeatsComponent
+                component: SelectSeatsComponent,
+                resolve: {
+                    'bookings': BookingsResolveService
+                }
+            },
+            {
+                path: 'payment',
+                component: PaymentComponent
             }
         ]
     },
@@ -98,7 +108,9 @@ const routes: Routes = [
         TheatresResolveService,
         TheatresService,
         MappingsResolveService,
-        MappingsService
+        MappingsService,
+        BookingsResolveService,
+        BookingsService
     ],
     declarations: []
 })
