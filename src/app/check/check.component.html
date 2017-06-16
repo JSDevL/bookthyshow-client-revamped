@@ -1,0 +1,52 @@
+<div id="check-booking">
+    <div class="container">
+        <hr class="invisible">
+        <form (submit)="getBooking()" #checkBookingForm="ngForm">
+            <div class="input-group">
+                <input class="form-control" type="text" placeholder="Enter Booking ID"
+                       ngModel
+                       name="id">
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit">Check</button>
+                </span>
+            </div>
+        </form>
+        <hr class="invisible">
+    </div>
+</div>
+
+<div *ngIf="!checkBookingForm.submitted" class="container">
+    <hr class="invisible">
+    <h3>Enter a booking ID to get details.</h3>
+</div>
+
+<div *ngIf="!checkedBooking && checkBookingForm.submitted" class="container">
+    <hr class="invisible">
+    <h3>No booking found.</h3>
+</div>
+
+<div *ngIf="checkedBooking && checkBookingForm.submitted" class="container">
+    <hr class="invisible">
+    <div id="checked-booking" class="row">
+        <div class="col-xs-3">
+            <a class="thumbnail">
+                <img [src]="'http://image.tmdb.org/t/p/w185/'+checkedBooking.movie.poster_path" style="width:100%;">
+            </a>
+        </div>
+
+        <div class="col-xs-9">
+            <div class="panel panel-default">
+                <div class="panel-heading">Order Summary</div>
+                <div class="panel-body">
+                    <h3>{{checkedBooking.movie.title}}</h3>
+                    <h4>{{checkedBooking.theatre.name}}</h4>
+                    <hr>
+                    <h5>{{checkedBooking.selectedSeats.length}} {{checkedBooking.selectedSeats.length === 1 ? 'seat' :
+                        'seats'}}</h5>
+                    <h5>{{checkedBooking.date | date:'shortDate'}} | {{checkedBooking.timing | date:'shortTime'}}</h5>
+                    <h5>{{checkedBooking.seatClass}}</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

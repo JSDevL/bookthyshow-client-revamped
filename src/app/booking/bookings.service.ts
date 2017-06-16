@@ -33,4 +33,8 @@ export class BookingsService {
             });
     }
 
+    getBooking(booking_id: String): Observable<Booking> {
+        return this.http.get(`/api/bookings/${booking_id}`).map((response: Response) => <Booking>response.json());
+    }
+
 }

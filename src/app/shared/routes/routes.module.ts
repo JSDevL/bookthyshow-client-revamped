@@ -12,6 +12,7 @@ import {BookingComponent} from '../../booking/booking.component';
 import {SelectDateTimeComponent} from '../../booking/select-date-time/select-date-time.component';
 import {SelectSeatsComponent} from '../../booking/select-seats/select-seats.component';
 import {PaymentComponent} from '../../booking/payment/payment.component';
+import {CheckComponent} from '../../check/check.component';
 
 import {MoviesService} from '../services/movies.service';
 import {MoviesResolveService} from './movies-resolve.service';
@@ -25,6 +26,7 @@ import {BookingsResolveService} from './bookings-resolve.service';
 import {BookingsService} from '../../booking/bookings.service';
 import {SelectDateTimeGuardService} from './select-date-time-guard.service';
 import {SelectSeatsGuardService} from './select-seats-guard.service';
+import {AboutComponent} from '../../about/about.component';
 
 const routes: Routes = [
     {
@@ -85,6 +87,14 @@ const routes: Routes = [
                 component: PaymentComponent
             }
         ]
+    },
+    {
+        path: 'about',
+        component: AboutComponent
+    },
+    {
+        path: 'check',
+        component: CheckComponent
     },
     {
         path: 'error',

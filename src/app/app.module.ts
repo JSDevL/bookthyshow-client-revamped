@@ -28,6 +28,8 @@ import {SeatsGridComponent} from './booking/select-seats/seats-grid/seats-grid.c
 import {NumToCharPipe} from './shared/pipes/num-to-char.pipe';
 import {BookingOverviewComponent} from './booking/select-seats/booking-overview/booking-overview.component';
 import {PaymentComponent} from './booking/payment/payment.component';
+import {CheckComponent} from './check/check.component';
+import {AboutComponent} from './about/about.component';
 
 @NgModule({
     declarations: [
@@ -50,7 +52,9 @@ import {PaymentComponent} from './booking/payment/payment.component';
         SeatsGridComponent,
         NumToCharPipe,
         BookingOverviewComponent,
-        PaymentComponent
+        PaymentComponent,
+        CheckComponent,
+        AboutComponent
     ],
     imports: [
         BsDropdownModule.forRoot(),
