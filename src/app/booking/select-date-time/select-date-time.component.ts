@@ -38,7 +38,15 @@ export class SelectDateTimeComponent implements OnInit, OnDestroy {
             this.newBooking = booking;
 
             if (this.newBooking.date && this.newBooking.timing) {
-                this.router.navigate(['/booking', 'select-seats']);
+                this.router.navigate(
+                    ['/booking', 'select-seats'],
+                    {
+                        queryParams: {
+                            'theatre._id': this.newBooking.theatre._id,
+                            'movie._id': this.newBooking.movie._id
+                        }
+                    }
+                );
             }
         });
     }

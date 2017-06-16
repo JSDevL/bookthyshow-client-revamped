@@ -4,7 +4,7 @@
         <td><b>{{r | numToChar}}</b></td>
         <td *ngFor="let seat of grid[r]; let c = index">
             <div class="seat"
-                 [ngClass]="{'selected': seat.status === 'selected'}"
+                 [ngClass]="{'selected': seat.status === 'selected', 'reserved': seat.status === 'reserved'}"
                  (click)="onSeatClick(seat, 'SOFA')">
                 {{c}}
             </div>
@@ -17,7 +17,7 @@
         <td><b>{{(r + 2) | numToChar}}</b></td>
         <td *ngFor="let seat of grid[(r + 2)]; let c = index">
             <div class="seat"
-                 [ngClass]="{'selected': seat.status === 'selected'}"
+                 [ngClass]="{'selected': seat.status === 'selected', 'reserved': seat.status === 'reserved'}"
                  (click)="onSeatClick(seat, 'GOLD')">
                 {{c}}
             </div>
@@ -30,7 +30,7 @@
         <td><b>{{(r + 6) | numToChar}}</b></td>
         <td *ngFor="let seat of grid[(r + 6)]; let c = index">
             <div class="seat"
-                 [ngClass]="{'selected': seat.status === 'selected'}"
+                 [ngClass]="{'selected': seat.status === 'selected', 'reserved': seat.status === 'reserved'}"
                  (click)="onSeatClick(seat, 'ECONOMY')">
                 {{c}}
             </div>

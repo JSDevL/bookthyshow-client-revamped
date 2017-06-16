@@ -4,6 +4,7 @@ import * as _ from 'underscore';
 import {Booking} from '../../../shared/models/booking.model';
 import {Subscription} from 'rxjs/Subscription';
 import {BookingsService} from '../../bookings.service';
+import {ActivatedRoute, Data} from '@angular/router';
 
 @Component({
     selector: 'app-seats-grid',
@@ -21,7 +22,9 @@ export class SeatsGridComponent implements OnDestroy, OnInit {
     public newBooking: Booking;
     private newBookingSubscription: Subscription;
 
-    constructor(private bookingsService: BookingsService) {
+    private dataSubscription: Subscription;
+
+    constructor(private route: ActivatedRoute, private bookingsService: BookingsService) {
         for (let r = 0; r < this.ROWS; r++) {
             this.grid[r] = [];
             for (let c = 0; c < this.COLS; c++) {
@@ -35,6 +38,15 @@ export class SeatsGridComponent implements OnDestroy, OnInit {
     }
 
     ngOnInit() {
+        this.dataSubscription = this.route.data.subscribe((data: Data) => {
+            const bookings = data['bookings'];
+            _.each(bookings, (booking: Booking) => {
+                _.each(booking.selectedSeats, (seat: Seat) => {
+                    this.grid[seat.row][seat.col].status = 'reserved';
+                });
+            });
+        });
+
         this.newBookingSubscription = this.bookingsService.newBooking$.subscribe((newBooking: Booking) => {
             this.newBooking = newBooking;
 
@@ -85,6 +97,7 @@ export class SeatsGridComponent implements OnDestroy, OnInit {
 
     ngOnDestroy() {
         this.newBookingSubscription.unsubscribe();
+        this.dataSubscription.unsubscribe();
     }
 
 }

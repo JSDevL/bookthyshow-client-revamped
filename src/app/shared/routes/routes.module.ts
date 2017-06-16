@@ -23,6 +23,8 @@ import {MappingsService} from '../services/mappings.service';
 import {MappingsResolveService} from './mappings-resolve.service';
 import {BookingsResolveService} from './bookings-resolve.service';
 import {BookingsService} from '../../booking/bookings.service';
+import {SelectDateTimeGuardService} from './select-date-time-guard.service';
+import {SelectSeatsGuardService} from './select-seats-guard.service';
 
 const routes: Routes = [
     {
@@ -67,14 +69,16 @@ const routes: Routes = [
             },
             {
                 path: 'select-date-time',
-                component: SelectDateTimeComponent
+                component: SelectDateTimeComponent,
+                canActivate: [SelectDateTimeGuardService]
             },
             {
                 path: 'select-seats',
                 component: SelectSeatsComponent,
                 resolve: {
                     'bookings': BookingsResolveService
-                }
+                },
+                canActivate: [SelectSeatsGuardService]
             },
             {
                 path: 'payment',
@@ -110,7 +114,9 @@ const routes: Routes = [
         MappingsResolveService,
         MappingsService,
         BookingsResolveService,
-        BookingsService
+        BookingsService,
+        SelectDateTimeGuardService,
+        SelectSeatsGuardService
     ],
     declarations: []
 })
