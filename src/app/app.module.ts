@@ -2,6 +2,8 @@ import {BrowserModule} from '@angular/platform-browser';
 import {ErrorHandler, NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpModule} from '@angular/http';
+import {ModalModule} from 'ngx-bootstrap/modal';
+import {BsDropdownModule} from 'ngx-bootstrap/dropdown';
 import {RoutesModule} from './shared/routes/routes.module';
 
 import {GlobalErrorHandler} from './shared/services/error-handler.service';
@@ -25,6 +27,7 @@ import {SelectSeatsComponent} from './booking/select-seats/select-seats.componen
 import {SeatsGridComponent} from './booking/select-seats/seats-grid/seats-grid.component';
 import {NumToCharPipe} from './shared/pipes/num-to-char.pipe';
 import {BookingOverviewComponent} from './booking/select-seats/booking-overview/booking-overview.component';
+import {PaymentComponent} from './booking/payment/payment.component';
 
 @NgModule({
     declarations: [
@@ -46,9 +49,12 @@ import {BookingOverviewComponent} from './booking/select-seats/booking-overview/
         SelectSeatsComponent,
         SeatsGridComponent,
         NumToCharPipe,
-        BookingOverviewComponent
+        BookingOverviewComponent,
+        PaymentComponent
     ],
     imports: [
+        BsDropdownModule.forRoot(),
+        ModalModule.forRoot(),
         BrowserModule,
         FormsModule,
         ReactiveFormsModule,

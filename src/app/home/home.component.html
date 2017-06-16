@@ -1,3 +1,20 @@
+<div class="modal fade" bsModal #demoModal="bs-modal" tabindex="-1">
+    <div class="modal-dialog modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title pull-left">Hello!</h4>
+                <button type="button" class="close pull-right" aria-label="Close" (click)="demoModal.hide()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                This is a live demo of BookThyShow, MEAN stack app. A personal project built by Arfath Ahmed. Feel free
+                to fiddle around; for this demo you've got Admin privileges ;)
+            </div>
+        </div>
+    </div>
+</div>
+
 <div id="home-banner">
     <div class="container">
         <h1 style="font-size:5rem;" class="brand">Book<span>Thy</span>Show</h1>

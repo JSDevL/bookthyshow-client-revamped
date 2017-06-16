@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {AfterViewInit, Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {ActivatedRoute, Data} from '@angular/router';
 import {Mapping} from '../shared/models/mapping.model';
 import {MappingsService} from '../shared/services/mappings.service';
@@ -6,6 +6,7 @@ import * as _ from 'underscore';
 import {City} from '../shared/models/city.model';
 import {Subscription} from 'rxjs/Subscription';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {ModalDirective} from 'ngx-bootstrap';
 
 @Component({
     selector: 'app-home',
@@ -13,7 +14,10 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
     styleUrls: ['./home.component.scss'],
     providers: [MappingsService]
 })
-export class HomeComponent implements OnInit, OnDestroy {
+export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
+
+    @ViewChild('demoModal')
+    demoModal: ModalDirective;
 
     public movieSearchForm: FormGroup;
     public searchResults: Mapping[] = [];
@@ -48,6 +52,10 @@ export class HomeComponent implements OnInit, OnDestroy {
                 }
             });
         });
+    }
+
+    ngAfterViewInit() {
+        this.demoModal.show();
     }
 
     ngOnDestroy() {
