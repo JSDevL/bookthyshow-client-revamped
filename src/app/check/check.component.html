@@ -43,6 +43,9 @@
                     <hr>
                     <h5>{{checkedBooking.selectedSeats.length}} {{checkedBooking.selectedSeats.length === 1 ? 'seat' :
                         'seats'}}</h5>
+                    <button class="btn btn-default btn-sm" *ngFor="let seat of checkedBooking.selectedSeats">{{seat.row
+                        | numToChar}}{{seat.col}}
+                    </button>
                     <h5>{{checkedBooking.date | date:'shortDate'}} | {{checkedBooking.timing | date:'shortTime'}}</h5>
                     <h5>{{checkedBooking.seatClass}}</h5>
                 </div>
